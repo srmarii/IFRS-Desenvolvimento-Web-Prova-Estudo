@@ -1,0 +1,211 @@
+/*
+GERAL
+- float = Elementos "flutuantes" se moverão ao máximo para a esquerda ou direita do elemento onde 
+    estão contidos, como ocorria com o atributo "align" das imagens. Elementos só podem ser flutuados horizontalmente, 
+    ou seja, apenas esquerda e direita, não cima e baixo. Todo conteúdo seguinte será colocado ao lado do elemento flutuante. 
+
+- position = Elementos posicionados com "position" podem ser movidos para qualquer lugar da tela, 
+    inclusive sobrepondo outros elementos. O elemento posicionado continua a ocupar espaço no fluxo normal da página, 
+    mas o espaço ocupado é o mesmo que antes de ser posicionado.
+    - abosolute = ele será posicionado em relação à página com um todo. Agora nos é permitido especificar a posição do 
+        elemento com maior exatidão, através das propriedades top, bottom, left e right, e o elemento sai do fluxo normal da página.
+    - relative = ele será posicionado em relação à sua posição original. Ele continua a ocupar espaço no fluxo normal da página, 
+        mas podemos movê-lo para cima, para baixo, para a esquerda ou para a direita, através das propriedades top, bottom, left e right.
+
+- margin: auto = 
+    - margin-left: auto; margin-right: auto; = centraliza horizontalmente
+    - margin-top: auto; margin-bottom: auto; = centraliza verticalmente
+
+- Diferença entre height, min-height e max-height
+    - height: 200px (Altura fixa): Trava o elemento em exatos 200px. Se o texto passar disso, ele vaza para fora da caixa.
+    - min-height: 200px (Altura mínima): Começa com 200px, mas cresce se houver muito conteúdo.
+    - max-height: 200px (Altura máxima): Começa pequena (do tamanho do texto), mas trava quando chegar em 200px.
+
+- GRID = posicionamento de elementos em grades
+    - display: grid; = define o elemento como um container de grid.
+    - grid-template-columns: 1fr 1fr; = define duas colunas de tamanho igual (1fr cada).
+    - grid-template-rows: 100px 200px; = define duas linhas, a primeira com 100px e a segunda com 200px.
+    - gap: 10px; = define o espaçamento entre as células do grid.
+
+- FLEX = posicionamento de elementos em linha ou coluna
+    - display: flex; = define o elemento como um container flexível.
+    - justify-content: space-around; = distribui os elementos com espaço ao redor.
+    - flex-direction: column; = organiza os elementos em coluna.
+
+- Diferença entre FLEX e GRID
+    - FLEX é unidimensional, ou seja, organiza os elementos em uma única linha ou coluna.
+    - GRID é bidimensional, ou seja, organiza os elementos em linhas e colunas.
+
+- display: block = Ocupa a largura inteira da linha, empurra o próximo elemento para baixo e aceita width, 
+height e margin: auto (ex: <div>, <p>).
+- display: inline = Fica lado a lado na mesma linha como texto, ocupando apenas o tamanho do seu conteúdo, 
+e ignora width, height e margens verticais/automáticas (ex: <span>, <a>).
+- display: inline-block = O melhor dos dois mundos — fica lado a lado na mesma linha como o inline, 
+mas respeita width, height e todas as margens como o block (ex: <button>, <input>).
+
+- line-height (Altura da linha / Entrelinha) = Controla a distância vertical entre uma linha de texto e a próxima 
+(como o espaçamento 1.5 no Word)
+
+-  transform:rotate(360deg) = 
+    - rotateX() (Eixo Horizontal): Gira o elemento de cima para baixo (ou vice-versa).
+    - rotateY() (Eixo Vertical): Gira o elemento da esquerda para a direita (ou vice-versa).
+    - rotateZ() ou rotate() (Eixo de Profundidade): Gira o elemento no próprio plano 2D da tela (sentido horário ou anti-horário), como os ponteiros de um relógio.
+
+*/
+
+body{
+    margin:0;    
+}
+
+header{
+    color: white;
+    background-color:orange;
+    border-radius: 0 0 100% 0;
+    text-shadow: 1px 5px 1px black; /* sombram, sempre 3 parametros (lado, baixo, opacidade) + cor*/
+    width:80%;
+}
+header h1{
+    margin:15px 0 2px 0; /* sempre em modo horário para top, right, bottom, left */
+}
+a{
+    text-decoration:none; /* sem sublinhado do link*/
+}
+.login{
+    float:right;
+    position:absolute;
+    right:10px;
+    top: 0;
+    margin:15px;
+}
+.login > p{
+    padding:0;
+    margin:0;
+}
+.categorias{
+    background-color: orange;
+    border-radius: 0 130px 0 130px;
+    width: 20%;
+    float:left;
+    min-height: calc(100vh - 80px);
+    margin-right: 15px;
+}
+.categorias a{
+    color:yellow;
+}
+.artigos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.artigos h3:before{
+    content: "▷";
+    color: orange;
+}
+footer{
+    display: flex;
+    justify-content: space-around;
+}
+footer h3{
+    text-align: center;
+}
+.textoFooter{
+    color: gray;
+}
+h3{
+    border-bottom: solid 1px black /* linha */
+}
+img{
+    float:left;
+    filter: drop-shadow(4px 4px 4px black);
+    width:150px;
+}
+iframe{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    width:250px;
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+table, td, th{
+    border: 1px solid black;
+}
+
+#div1{
+    border-radius: 50%;
+    border: 1px solid black;
+    text-align:center;
+    height: 200px;
+    width: 200px;
+    line-height: 200px;
+    font-size: 16px;
+    transition: 1s;
+}
+#div1:hover{
+    background-color:red;
+    font-size:xx-small;
+    height:100px;
+    width:100px;
+    line-height: 100px;
+}
+
+#div2{
+    height:100px;
+    width:100px;
+    line-height:100px;
+    text-align:center;
+    border-radius:50%;
+    font-size:medium;
+    border: solid black 1px;
+    animation: animar infinite 3s; /* forwards mantem o estado final */
+}
+@keyframes animar {
+  from {
+
+  }
+  to {
+    border:solid 10px navy;
+    background-color:blue;
+    color:white;
+    font-size:x-large;
+    margin-left:200px; /* deslocamento para a direita */
+    transform:rotateZ(360deg); /* ou só rotate()*/
+    filter:blur(2px);
+  }
+}
+
+@media (orientation: portrait) {
+    header{
+        width:100%;
+    }
+    .login{
+        right: 0px;
+        top: 40px;
+    }
+    .categorias{
+        float: none; /* Remove o alinhamento lateral */
+        width: 100%; /* Ocupa toda a largura da tela */
+        min-height: auto; /* Remove a altura mínima da tela inteira */
+        margin: 50px auto 15px auto; /* Empurra para baixo do login e centraliza */
+        padding: 15px 10px;       /* Espaçamento interno para o texto não encostar na borda */
+        border-radius: 0 130px 0 130px; /* Ajusta a curva para o formato horizontal */
+        
+        /* Alinha os links lado a lado e quebra linha centralizado */
+        display: flex;
+        justify-content: center;
+        gap: 8px; /* espaçamento entre os elementos */
+    }
+    .categorias p {
+        margin: 0;
+    }
+    .artigos{
+        grid-template-columns: 1fr;
+    }
+    footer{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+    
+}
